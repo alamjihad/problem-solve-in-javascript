@@ -1,27 +1,32 @@
-var i,t=0,b=0;
-var n=readline();
-var arr=readline().split(" ");
-for(i=0;i<n;i++)
+var n = readline();
+var s = readline().split(' ').map(Number);
+var d = -1;
+for (var i=0; i<n-1; i++)
 {
-	if(i>0&&arr[i]<arr[i-1])
-	{
-	    t++;
-	    b=i;
+    if (s[i]>s[i+1])
+    {
+		d = i+1;
+		s = s.slice(d).concat(s.slice(0, d));
+		break;
 	}
 }
-if(t===0)
+if (d == -1) 
 {
     print(0);
 }
 else 
 {
-    if(t===1&&arr[n-1]<=arr[0])
-    {
-        print(n-b);
-    }
-      else 
-      {
-          print(-1);
-          
-      }
+	for (var i=0; i<n-1; i++)
+	{
+		if (s[i]>s[i+1]) 
+		{
+    		print(-1);
+    		d = -1;
+    		break;
+		}
+	}
+	if (d != -1)
+	{
+	    print(n-d);
+	}
 }
