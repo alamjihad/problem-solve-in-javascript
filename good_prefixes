@@ -1,0 +1,23 @@
+"use strict";
+const t = Number(readline());
+for (let i = 0; i < t; ++i)
+{
+    const length = Number(readline());
+    const arr = readline().split(" ").map(Number);
+    let sum = 0;
+    let max = -1;
+    let count = 0;
+    for (let j = 0; j < length; j++)
+    {
+        if (arr[j] > max)
+        {
+            max = arr[j];
+        }
+        sum += arr[j];
+        if (sum - max === max)
+        {
+            count++;
+        }
+    }
+    print(count);
+}
